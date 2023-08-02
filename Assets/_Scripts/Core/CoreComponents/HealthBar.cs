@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : CoreComponent
+public class HealthBar : CoreComponent, ILogicUpdate
 {
     public Slider slider;
     public Gradient gradient;

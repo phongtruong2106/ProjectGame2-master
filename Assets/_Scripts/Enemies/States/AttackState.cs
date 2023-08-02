@@ -15,7 +15,7 @@ public class AttackState : State
         this.attackPosition = attackPosition;
     }
 
-       public override void DoChecks()
+    public override void DoChecks()
     {
         base.DoChecks();
 

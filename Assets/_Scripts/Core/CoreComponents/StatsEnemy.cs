@@ -8,7 +8,7 @@ public class StatsEnemy : CoreComponent
     public event Action OnHealthZero;
 
     [SerializeField] private float maxHealth;
-    private float currentHealth;
+    public static float currentHealth;
 
     protected override void Awake()
     {

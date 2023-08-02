@@ -13,7 +13,7 @@ public class Death : CoreComponent, IDDataPersistence
         private Stats Stats => stats ? stats : core.GetCoreComponent(ref stats);
         private Stats stats;
         private void Start() {
-        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+            GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         }
         public void Die()
         {

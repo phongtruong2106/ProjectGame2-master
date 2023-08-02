@@ -162,7 +162,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   whatisGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   whatisPlayer:
     serializedVersion: 2
     m_Bits: 2048

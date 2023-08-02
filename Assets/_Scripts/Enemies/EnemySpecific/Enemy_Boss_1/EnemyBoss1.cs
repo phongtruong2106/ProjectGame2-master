@@ -11,7 +11,7 @@ public class EnemyBoss1 : Entity
     public EBOSS1_LookForPlayerState lookForPlayerState { get; private set; }
     public EBOSS1_DeadState deadState { get; private set;}
     public EBOSS1_RangerAttack1State rangerAttack1State { get; private set; }
-    //public EBOSS1_RangerAttack2State rangerAttack2State { get; private set; }
+    public EBOSS1_RangerAttack2State rangerAttack2State { get; private set; }
 
     [SerializeField]
     private D_MoveState moveStateData;
@@ -27,8 +27,8 @@ public class EnemyBoss1 : Entity
     private D_DeadState deadStateData;
     [SerializeField]
     private D_RangeAttaclState rangeAttacl1StateData;
-    /*[SerializeField]
-    private D_RangeAttaclState rangeAttacl2StateData;*/
+    [SerializeField]
+    private D_RangeAttaclState rangeAttacl2StateData;
 
     [SerializeField]
     private Transform meleeAttackPosition;
@@ -46,6 +46,7 @@ public class EnemyBoss1 : Entity
         lookForPlayerState = new EBOSS1_LookForPlayerState(this, stateMachine, "lookForPlayer", lookForPlayerStateData, this);
         deadState = new EBOSS1_DeadState(this, stateMachine, "Death", deadStateData, this);
         rangerAttack1State = new EBOSS1_RangerAttack1State(this, stateMachine, "RangerAttack1", rangedAttackPosition, rangeAttacl1StateData, this);
+        rangerAttack2State = new EBOSS1_RangerAttack2State(this, stateMachine, "RangerAttack2", rangedAttackPosition, rangeAttacl2StateData, this);
     }
     private void Start()
     {
@@ -58,4 +59,5 @@ public class EnemyBoss1 : Entity
         base.OnDrawGizmos();
         Gizmos.DrawWireSphere(meleeAttackPosition.position, meleeAttackStateData.attackRadius);
     }
+   
 }

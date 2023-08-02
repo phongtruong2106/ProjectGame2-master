@@ -2,28 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossBattel : CoreComponent
+public class BossBattel : MonoBehaviour
 {
-    [SerializeField]
-    private Animator animator;
+    
+    public Animator animator;
+    public Animation anim;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        anim = GetComponent<Animation>();
     }
 
-    private void Update()
+    public void animatorDie()
     {
-      ChangePhase();
-    }
-
-    private void ChangePhase()
-    {
-        if(DeathEnemy.isDead == true)
-        {
-
-          /*  string nameLayer = animator.GetLayerName()
-            core.transform.parent.gameObject.SetActive(true);*/
-        }
+        animator.SetBool("Death", true);
     }
 }
