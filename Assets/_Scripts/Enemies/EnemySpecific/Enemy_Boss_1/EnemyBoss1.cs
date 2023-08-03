@@ -34,6 +34,8 @@ public class EnemyBoss1 : Entity
     private Transform meleeAttackPosition;
     [SerializeField]
     private Transform rangedAttackPosition;
+    [SerializeField]
+    private Transform SkillAttackPosition;
 
 
     public override void Awake()
@@ -46,7 +48,7 @@ public class EnemyBoss1 : Entity
         lookForPlayerState = new EBOSS1_LookForPlayerState(this, stateMachine, "lookForPlayer", lookForPlayerStateData, this);
         deadState = new EBOSS1_DeadState(this, stateMachine, "Death", deadStateData, this);
         rangerAttack1State = new EBOSS1_RangerAttack1State(this, stateMachine, "RangerAttack1", rangedAttackPosition, rangeAttacl1StateData, this);
-        rangerAttack2State = new EBOSS1_RangerAttack2State(this, stateMachine, "RangerAttack2", rangedAttackPosition, rangeAttacl2StateData, this);
+        rangerAttack2State = new EBOSS1_RangerAttack2State(this, stateMachine, "RangerAttack2", SkillAttackPosition, rangeAttacl2StateData, this);
     }
     private void Start()
     {

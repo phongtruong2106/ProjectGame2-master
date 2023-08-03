@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ecf9d52d78e83a4cb54b5bd78ef25be, type: 3}
   m_Name: EBOSS1_RangedAttack2StateData
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 4884833395203193944, guid: 7468419d8f3e76342aaf8143d22e1bdf, type: 3}
   projectileDamage: 10
   projectileSpeed: 12
   projectitleTravelDistance: 0

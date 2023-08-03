@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 3
-  damageRadius: 0.1
+  damageRadius: -0.15
   rb: {fileID: 0}
   whatisGround:
     serializedVersion: 2

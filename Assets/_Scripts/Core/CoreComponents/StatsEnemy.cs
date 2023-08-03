@@ -8,7 +8,7 @@ public class StatsEnemy : CoreComponent
     public event Action OnHealthZero;
 
     [SerializeField] private float maxHealth;
-    public static float currentHealth;
+    public float currentHealth;
 
     protected override void Awake()
     {
@@ -34,8 +34,8 @@ public class StatsEnemy : CoreComponent
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
     }
 
-    public void Reset()
+    public void ResetHealth(float health)
     {
-        currentHealth = maxHealth;
+        currentHealth = health;
     }
 }

@@ -12,8 +12,6 @@ public class Lazer : MonoBehaviour
     private float travelDistance;
     private float xStartPos;
     [SerializeField]
-    private float damageRadius;
-    [SerializeField]
     private bool isGravityOn;
     private bool hasHitGround;
 
@@ -23,6 +21,8 @@ public class Lazer : MonoBehaviour
     private LayerMask whatisPlayer;
     [SerializeField]
     private BoxCollider2D BoxColliderMega;
+    [SerializeField]
+    private Transform damagePosition;
 
     private void Start()
     {
@@ -38,20 +38,14 @@ public class Lazer : MonoBehaviour
         if (!hasHitGround)
         {
             attackDetails.position = transform.position;
-
-    /*        if (isGravityOn)
-            {
-                float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            }*/
+            transform.position = BoxColliderMega.size;
         }
     }
     private void FixedUpdate()
     {
         if (!hasHitGround)
         {
-            Collider2D damageHit = Physics2D.OverlapCircle(BoxColliderMega.size, damageRadius, whatisPlayer);
-            Collider2D groundHit = Physics2D.OverlapCircle(BoxColliderMega.size, damageRadius, whatisGround);
+            Collider2D damageHit = Physics2D.OverlapBox(damagePosition.position, BoxColliderMega.size, whatisPlayer);
 
             if (damageHit)
             {
@@ -62,12 +56,6 @@ public class Lazer : MonoBehaviour
                 }
                 Debug.Log("Attack +1");
                 Destroy(gameObject);
-            }
-            if (groundHit)
-            {
-                hasHitGround = true;
-                /*rb.gravityScale = 0f;
-                rb.velocity = Vector2.zero;*/
             }
             //f cham abs gia tri tuyet doi vi tri bat dau - bien doi vi tri cham x l
             if (Mathf.Abs(xStartPos - transform.position.x) >= travelDistance && !isGravityOn)
@@ -89,6 +77,6 @@ public class Lazer : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(BoxColliderMega.size, damageRadius);
+        Gizmos.DrawWireCube(damagePosition.position, BoxColliderMega.size);
     }
 }

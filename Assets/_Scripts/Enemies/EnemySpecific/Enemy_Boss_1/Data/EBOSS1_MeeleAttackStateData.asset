@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7e72b012dbb4247b37520518d804ca, type: 3}
   m_Name: EBOSS1_MeeleAttackStateData
   m_EditorClassIdentifier: 
-  attackRadius: 0.19
+  attackRadius: 0.21
   attackDamage: 40
   knockbackAngle: {x: 1, y: 1}
   knockbackStrength: 2.5

@@ -18,4 +18,13 @@ public class BossBattel : MonoBehaviour
     {
         animator.SetBool("Death", true);
     }
+    public void animatorCloseDie()
+    {
+        animator.SetBool("Death", false);
+    }
+
+    public void animatorLive()
+    {
+        animator.SetBool("Live", true);
+    }
 }

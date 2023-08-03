@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2f018e6d95eed45b3646863364c722, type: 3}
   m_Name: EBOSS1_DetectedStateData
   m_EditorClassIdentifier: 
-  longRangeActionTime: 0.5
+  longRangeActionTime: 0.55

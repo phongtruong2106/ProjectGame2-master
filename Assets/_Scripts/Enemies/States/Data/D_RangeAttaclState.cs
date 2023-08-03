@@ -9,4 +9,9 @@ public class D_RangeAttaclState : ScriptableObject
         public float projectileDamage = 10f;
         public float projectileSpeed = 12f;
         public float projectitleTravelDistance;
+
+        public void AttackRangedPhase(float damage)
+        {
+            projectileDamage += damage;
+        }
 }

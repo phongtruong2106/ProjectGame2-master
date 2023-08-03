@@ -7,4 +7,9 @@ public struct AttackDetail
 {
     public Vector2 position;
     public float damageAmount;
+
+    public void attackPhaseProtitel(float damge)
+    {
+        damageAmount += damge;
+    }
 }

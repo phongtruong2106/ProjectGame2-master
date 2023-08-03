@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 2147854245034271293}
   - component: {fileID: 7059491031170612453}
   - component: {fileID: 7803701791861456931}
-  - component: {fileID: 4555263083344393884}
   - component: {fileID: 998174345240041337}
-  - component: {fileID: 8942066078369109815}
+  - component: {fileID: 1225989003874056192}
   m_Layer: 0
   m_Name: Lazer
   m_TagString: Untagged
@@ -31,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.045419753, y: -0.0024499977, z: 0}
-  m_LocalScale: {x: 0.99517, y: 0.96462, z: 1}
+  m_LocalScale: {x: 2, y: 1.9386035, z: 2.009707}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7671743669829370741}
@@ -109,51 +108,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &4555263083344393884
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1763170019851093971}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 0.5}
-    newSize: {x: 1.5, y: 0.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.5}
-  m_EdgeRadius: 0
 --- !u!61 &998174345240041337
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -186,7 +140,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.4612429, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -197,9 +151,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.5}
+  m_Size: {x: 0.5775142, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &8942066078369109815
+--- !u!114 &1225989003874056192
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3507fd48d4b22f040bbac24165fc66e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageRadius: 0
+  damageRadius: 4
   isGravityOn: 0
   whatisGround:
     serializedVersion: 2
@@ -246,8 +200,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5284, y: -0.0137, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2147854245034271293}
   m_Father: {fileID: 0}

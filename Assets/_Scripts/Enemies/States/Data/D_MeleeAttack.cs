@@ -12,4 +12,9 @@ public class D_MeleeAttack : ScriptableObject
     public Vector2 knockbackAngle = Vector2.one;
     public float knockbackStrength = 2.5f;
     public LayerMask whatIsPlayer;
+
+    public void AttackMeleePhase(float damage)
+    {
+        attackDamage += damage;
+    }
 }
