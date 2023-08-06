@@ -7,6 +7,7 @@ public class DeathEnemyBoss : CoreComponent
     public static int deathCount = 0;
     public bool isdead = false;
     public bool isDeadPhase = false;
+    public static bool isDeadPhaseC = false;
     private bool activateLiveAnimator = false;
     public float healthPhase = 200f;
     public float meleeAttack = 100f;
@@ -90,6 +91,7 @@ public class DeathEnemyBoss : CoreComponent
         {
             Destroy(core.transform.parent.gameObject);
             Debug.Log("Boss die");
+            isDeadPhaseC = true;
         }
     }
     private void OnEnable()

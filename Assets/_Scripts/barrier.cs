@@ -24,9 +24,7 @@ public class barrier : MonoBehaviour
     {
         if(DeathEnemy.deathCount >= countEnemyCurrent)
         {
-            isOpenBarrier = true;
-            
-            
+            isOpenBarrier = true;    
         }
 
         if(isOpenBarrier)

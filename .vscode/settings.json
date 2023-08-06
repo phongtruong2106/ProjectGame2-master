@@ -61,5 +61,6 @@
         "Detectes",
         "idie",
         "projectitle"
-    ]
+    ],
+    "dotnet.defaultSolution": "ProjectGame2-master.sln"
 }
