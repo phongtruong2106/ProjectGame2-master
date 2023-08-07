@@ -6,22 +6,32 @@ public class Barrier_mission_a : MonoBehaviour
 {
     [SerializeField]
     private Animator anim;
-    private DeathEnemyBoss deathEnemyBoss;
+    private bool isOpenBarrier;
+/*    private DeathEnemyBoss deathEnemyBoss;*/
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        isOpenBarrier = false;
     }
 
     private void Update()
     {
+        if (!isOpenBarrier)
         setBarrierClose();
     }
     public void setBarrierClose()
     {
+
         if(DeathEnemyBoss.isDeadPhaseC)
         {
-            anim.SetBool("Close", true);
+            isOpenBarrier = true;
+            if(isOpenBarrier)
+            {
+                anim.SetBool("Close", true);
+                CameraManage.Instance.ShakeCamera(1f, 0.7f);
+            }
+            
         }
         
     }

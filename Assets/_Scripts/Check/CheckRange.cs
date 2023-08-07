@@ -15,6 +15,8 @@ public class CheckRange : MonoBehaviour
         if(layerMask == (layerMask | (1 << collision.gameObject.layer)))
         {
             barrier.GetComponent<barrierMission>().SetBarrierMissionOn();
+            CameraManage.Instance.ShakeCamera(1f, 0.7f);
+            
         }
     }
 }
