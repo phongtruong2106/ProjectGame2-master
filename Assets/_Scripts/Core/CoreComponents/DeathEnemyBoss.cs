@@ -66,6 +66,7 @@ public class DeathEnemyBoss : CoreComponent
     {
          if(isdead)
          {  
+            
             Invoke(nameof(CutScenes), 2f);
             isCheckPhase = true;
             if (isCheckPhase)
