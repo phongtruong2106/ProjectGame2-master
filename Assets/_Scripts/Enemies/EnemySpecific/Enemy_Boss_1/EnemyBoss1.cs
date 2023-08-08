@@ -52,7 +52,7 @@ public class EnemyBoss1 : Entity
     }
     private void Start()
     {
-        stateMachine.Initialize(moveState);
+        stateMachine.Initialize(lookForPlayerState);
     }
 
 

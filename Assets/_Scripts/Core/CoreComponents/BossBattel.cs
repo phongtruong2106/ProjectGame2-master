@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BossBattel : MonoBehaviour
 {
-    
     public Animator animator;
     public Animation anim;
 

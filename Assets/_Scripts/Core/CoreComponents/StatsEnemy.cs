@@ -8,7 +8,9 @@ public class StatsEnemy : CoreComponent
     public event Action OnHealthZero;
 
     [SerializeField] private float maxHealth;
-    public float currentHealth;
+    public static float currentHealth;
+    public static bool isDeath = false;
+    public static bool isHealth = false;
 
     protected override void Awake()
     {
@@ -19,7 +21,7 @@ public class StatsEnemy : CoreComponent
     public void DecreaseHealth(float amount)
     {
          currentHealth -= amount;
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 )
         {
             currentHealth = 0;
 
@@ -37,5 +39,6 @@ public class StatsEnemy : CoreComponent
     public void ResetHealth(float health)
     {
         currentHealth = health;
+        isHealth = true;
     }
 }

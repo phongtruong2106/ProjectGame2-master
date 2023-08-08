@@ -4,95 +4,99 @@ using UnityEngine;
 
 public class DeathEnemyBoss : CoreComponent
 {
+
+    public static DeathEnemyBoss Instance;
     public static int deathCount = 0;
     public bool isdead = false;
-    public bool isDeadPhase = false;
+    public bool isCheckPhase = false;
     public static bool isDeadPhaseC = false;
     private bool activateLiveAnimator = false;
     public float healthPhase = 200f;
     public float meleeAttack = 100f;
     public float rangedAttack = 100f;
+    public GameObject cutSceneTimelineobj;
 
     [SerializeField]
     private GameObject bossBattel;
     [SerializeField]
     private GameObject[] deathParticles;
-
-    private ParticleManage ParticleManager => particleManage ? particleManage : core.GetCoreComponent(ref particleManage);
-    private ParticleManage particleManage;
-
-    private StatsEnemy Stats => stats ? stats : core.GetCoreComponent(ref stats);
-    private StatsEnemy stats;
     [SerializeField]
     private float waitTime = 0;
     [SerializeField]
     private float waitTimeCurrent = 3f;
+
+    private ParticleManage ParticleManager => particleManage ? particleManage : core.GetCoreComponent(ref particleManage);
+    private ParticleManage particleManage;
+    private StatsEnemy Stats => stats ? stats : core.GetCoreComponent(ref stats);
+    private StatsEnemy stats;
     private Coroutine waitCoroutine;
+    public BossBattel BossBattel;
+    public EnemyBoss1 EnemyBoss1;
     
     private AttackDetail attackDetail;
-    
+  
 
+    private void Start()
+    {
+        cutSceneTimelineobj.SetActive(false);
+    }
     private void Update()
     {
-        ChangePhase();
+        liveCutScenes();
+        /*ChangePhase();*/
+
     }
 
     public void Die()
     {
-        foreach (var particle in deathParticles)
+        /*     foreach (var particle in deathParticles)
         {
             ParticleManager.StartParticles(particle);
         }
-        waitTime = 0f;
-        isdead = true;
-        bossBattel.GetComponent<BossBattel>().animatorDie();
-
-        // Nếu đã có một coroutine đang chạy, hãy dừng nó trước khi bắt đầu một coroutine mới.
-        if (waitCoroutine != null)
+        */
+        if(!StatsEnemy.isHealth)
         {
-            StopCoroutine(waitCoroutine);
+            bossBattel.GetComponent<BossBattel>().animatorDie();
+            isdead = true;
         }
-        checkPhaseDie();
+       
     }
 
-    public void ChangePhase()
+    public void liveCutScenes()
     {
-        if(isdead)
-        {
-            if (!activateLiveAnimator) // Nếu chưa kích hoạt trạng thái "Live" của animator
+         if(isdead)
+         {  
+            Invoke(nameof(CutScenes), 2f);
+            isCheckPhase = true;
+            if (isCheckPhase)
             {
-                waitTime += Time.deltaTime; // Tăng biến đếm thời gian
-                Debug.Log(waitTime);
-                // Kiểm tra nếu đã đạt đến thời gian mong muốn (5 giây)
-                if (waitTime >= 5f)
-                {
-                    activateLiveAnimator = true; // Đánh dấu rằng đã đủ thời gian để kích hoạt trạng thái "Live"
-                    bossBattel.GetComponent<BossBattel>().animatorCloseDie();
-                }
-            }
-
-            if (activateLiveAnimator)
-            {
-
-                bossBattel.GetComponent<BossBattel>().animatorLive();
-                Stats.ResetHealth(healthPhase);
-                attackDetail.attackPhaseProtitel(rangedAttack);
-                // Thực hiện các hành động khi đạt đủ thời gian để kích hoạt trạng thái "Live"
+                bossBattel.GetComponent <BossBattel>().animatorCloseDie();
                 bossBattel.GetComponent<BossBattel>().animator.SetLayerWeight(1, 1f);
-                isdead = false;
-                isDeadPhase = true;
-                activateLiveAnimator = false; // Reset cờ để sử dụng cho lần sau
+                stats.ResetHealth(healthPhase);
             }
         }
     }
+
+    /*public void ChangePhase()
+    {      
+         if(isCheckPhase)
+         {
+            bossBattel.GetComponent<BossBattel>().animator.SetLayerWeight(1, 1f);
+         }
+    
+    }*/
+    private void CutScenes()
+    {
+          cutSceneTimelineobj.SetActive(true);
+    }
+
     public void checkPhaseDie()
     {
-        if(isDeadPhase)
-        {
+       
             Destroy(core.transform.parent.gameObject);
             Debug.Log("Boss die");
             isDeadPhaseC = true;
-        }
+        
     }
     private void OnEnable()
     {

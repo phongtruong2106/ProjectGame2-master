@@ -17,8 +17,8 @@ MonoBehaviour:
   wallCheckDistance: 0.2
   ledgeCheckDistance: 0.42
   groundCheckRadius: 0.4
-  maxArgoDistance: 2.22
-  minArgoDistance: 2.02
+  maxArgoDistance: 5.23
+  minArgoDistance: 3.48
   stunResistance: 0
   stunRecoveryTime: 0
   closeRangeActionDistace: 0.27
