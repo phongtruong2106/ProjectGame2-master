@@ -8,7 +8,7 @@ public class StatsEnemy : CoreComponent
     public event Action OnHealthZero;
 
     [SerializeField] private float maxHealth;
-    public static float currentHealth;
+    public float currentHealth;
     public static bool isDeath = false;
     public static bool isHealth = false;
 

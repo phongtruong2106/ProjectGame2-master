@@ -9,6 +9,7 @@ public class DeathEnemyBoss : CoreComponent
     public static int deathCount = 0;
     public bool isdead = false;
     public bool isCheckPhase = false;
+    public bool isdeathPhase = false;
     public static bool isDeadPhaseC = false;
     private bool activateLiveAnimator = false;
     public float healthPhase = 200f;
@@ -32,6 +33,7 @@ public class DeathEnemyBoss : CoreComponent
     private Coroutine waitCoroutine;
     public BossBattel BossBattel;
     public EnemyBoss1 EnemyBoss1;
+    public LootBag lootBag;
     
     private AttackDetail attackDetail;
   
@@ -49,17 +51,13 @@ public class DeathEnemyBoss : CoreComponent
 
     public void Die()
     {
-        /*     foreach (var particle in deathParticles)
-        {
-            ParticleManager.StartParticles(particle);
-        }
-        */
         if(!StatsEnemy.isHealth)
         {
-            bossBattel.GetComponent<BossBattel>().animatorDie();
-            isdead = true;
+             bossBattel.GetComponent<BossBattel>().animatorDie();
+             isdead = true;
         }
-       
+
+        CheckPhaseDie();
     }
 
     public void liveCutScenes()
@@ -74,30 +72,32 @@ public class DeathEnemyBoss : CoreComponent
                 bossBattel.GetComponent <BossBattel>().animatorCloseDie();
                 bossBattel.GetComponent<BossBattel>().animator.SetLayerWeight(1, 1f);
                 stats.ResetHealth(healthPhase);
+                attackDetail.attackPhaseProtitel(rangedAttack);
+                isdead = false;
+                isdeathPhase = true;
             }
         }
     }
 
-    /*public void ChangePhase()
-    {      
-         if(isCheckPhase)
-         {
-            bossBattel.GetComponent<BossBattel>().animator.SetLayerWeight(1, 1f);
-         }
-    
-    }*/
     private void CutScenes()
     {
           cutSceneTimelineobj.SetActive(true);
     }
 
-    public void checkPhaseDie()
+    public void CheckPhaseDie()
     {
-       
+        if(isdeathPhase)
+        {
+            foreach (var particle in deathParticles)
+            {
+                ParticleManager.StartParticles(particle);
+            }
+
+            lootBag.GetComponent<LootBag>().GetItemsDropp();
             Destroy(core.transform.parent.gameObject);
             Debug.Log("Boss die");
             isDeadPhaseC = true;
-        
+        }
     }
     private void OnEnable()
     {

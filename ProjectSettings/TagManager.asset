@@ -22,7 +22,7 @@ TagManager:
   - Dead
   - Player
   - Weapon
-  - 
+  - Item
   - 
   - 
   - 
@@ -71,6 +71,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 3124726425
+    locked: 0
+  - name: Items
+    uniqueID: 4102668687
     locked: 0
   - name: UI
     uniqueID: 1250204383
