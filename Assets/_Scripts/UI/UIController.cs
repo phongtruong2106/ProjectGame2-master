@@ -11,10 +11,23 @@ public class UIController : MonoBehaviour
     [SerializeField]
     public Text nameItem;
 
+    [Space]
+    [Header("UI Catalog element")]
+    [SerializeField]
+    private GameObject Items_Avt;
+    [SerializeField]
+    private Image Items_null;
+    [SerializeField]
+    private Button btn_items;
 
+
+    private void Start()
+    {
+    /*    Items_Avt = Get*/
+    }
     public void CreateInstace()
     {
-        if(instance == null)
+        if(instance == null)    
         {
             instance = this;
         }
@@ -25,8 +38,23 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void GetInforItemToDialog(string nameText)
+    public void GetInforItemToDialog(string nameText, Sprite sp)
     {
         nameItem.text = nameText;
+        avatarItem.sprite = sp;
+    } 
+
+    public void HideItem()
+    {
+       /* Items_Avt.enabled = true;*/
+        Items_null.enabled = false;
+        btn_items.enabled= false;
+    }
+
+    public void ShowItem()
+    {
+        /*Items_Avt.enabled = false;*/
+        Items_null.enabled=true;
+        btn_items.enabled=true;
     }
 }

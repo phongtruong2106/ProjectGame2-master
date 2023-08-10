@@ -17,12 +17,12 @@ public class Items : MonoBehaviour
        ID = items_Data.id_dt; return ID;
     }
 
- /*   public Sprite GetSprite()
+    public Sprite GetSprite()
     {
-        sprite = items_Data.Sprite_data; return sprite;
-    }*/
+        sprite = items_Data.sprite_dt; return sprite;
+    }
 
-    public string GetName()
+    public string GetName() 
     {
         Name = items_Data.name_dt; return Name;
     }

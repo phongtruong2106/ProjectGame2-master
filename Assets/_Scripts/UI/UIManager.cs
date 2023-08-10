@@ -13,12 +13,13 @@ public class UIManager : MonoBehaviour
     private GameObject ui_ItemSystem_panel;
     [SerializeField]
     private GameObject ui_Dialog_boxItems_panel;
-
     [Space]
     [SerializeField]
     private Button btn_Open_Inventory;
     [SerializeField]
     private Button btn_Close_Inventory;
+
+    
 
     private void Awake()
     {

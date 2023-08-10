@@ -1,25 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Windows.Speech;
 
 public class CheckRangeItems : MonoBehaviour
 {
+    public static CheckRangeItems instance;
     public GameObject keyBoard_Obj;
     public GameObject Item_Obj;
     public bool isShowKey = false;
+    public static bool issaveData =false;
 
     protected PlayerData playerData;
     [SerializeField]
     private Items items;
     [SerializeField]
     private GameObject uiController;
+    [SerializeField]
     
 
-    public int ID;
-    public string Name;
-    public string description;
+    public static int ID;
+    public static string Name;
+    public static string description;
+    public static Sprite sprite;
 
+    private void Awake()
+    {
+        CreateInstace();
+    }
+    public void CreateInstace()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+
+        }
+    }
     private void Update()
     {
         Enterbutton();
@@ -65,10 +85,13 @@ public class CheckRangeItems : MonoBehaviour
                 ID = items.GetID();
                 Name = items.GetName();
                 description = items.GetDescription();
+                sprite = items.GetSprite();
                 UIManager.instance.OpenItemSystemsPanel();
-                uiController.GetComponent<UIController>().GetInforItemToDialog(Name);
+
+                uiController.GetComponent<UIController>().GetInforItemToDialog(Name,sprite);
                 Debug.Log(ID + "," + name + "," + description);
                 Destroy(Item_Obj);
+                issaveData = true;
                 
             }
         }
