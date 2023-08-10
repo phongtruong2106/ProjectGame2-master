@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
-    /*    Items_Avt = Get*/
+        
     }
     public void CreateInstace()
     {

@@ -80,14 +80,13 @@ public class CheckRangeItems : MonoBehaviour
     {
         if(isShowKey)
         {
-            if(Input.GetKey(KeyCode.F))
+            if(Input.GetKeyDown(KeyCode.F))
             {
                 ID = items.GetID();
                 Name = items.GetName();
                 description = items.GetDescription();
                 sprite = items.GetSprite();
                 UIManager.instance.OpenItemSystemsPanel();
-
                 uiController.GetComponent<UIController>().GetInforItemToDialog(Name,sprite);
                 Debug.Log(ID + "," + name + "," + description);
                 Destroy(Item_Obj);
