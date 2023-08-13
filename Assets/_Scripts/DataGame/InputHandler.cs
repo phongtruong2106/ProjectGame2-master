@@ -13,6 +13,11 @@ public class InputHandler: MonoBehaviour
     private Sprite sprite_Handle;
 
     public List<InputEntry> data_List = new List<InputEntry>();
+
+    private void Start()
+    {
+        data_List = DataManage.ReadFromJson<InputEntry>(filename);
+    }
     private void Update()
     {
         if(CheckRangeItems.issaveData)

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9406067f87f8b0e4095dd9b670dc1fcb, type: 3}
   m_Name: ITems1_Basedata
   m_EditorClassIdentifier: 
-  id_dt: 5
-  sprite_dt: {fileID: 21300000, guid: 0d0b64e0343996344a7f9b6d747a8a89, type: 3}
+  id_dt: 1
+  sprite_dt: {fileID: 2081781005, guid: 0a50f0a3d17facc49a1ba7a1f108a966, type: 3}
   name_dt: HeadAirm
   description_dt: asasjdijaisodji

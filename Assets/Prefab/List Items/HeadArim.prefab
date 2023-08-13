@@ -406,6 +406,4 @@ MonoBehaviour:
   Item_Obj: {fileID: 2954930778015862541}
   isShowKey: 0
   items: {fileID: 8532084694476178695}
-  ID: 0
-  Name: 
-  description: 
+  uiController: {fileID: 0}
