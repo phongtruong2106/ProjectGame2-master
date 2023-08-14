@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class Checkitems : MonoBehaviour
     public string description;
     public Sprite sprite;
 
+
     [SerializeField]
     private DataListItems dataListItems;
     [SerializeField]
@@ -18,15 +20,28 @@ public class Checkitems : MonoBehaviour
 
     private void Start()
     {
-        uiController = GameObject.Find("UIController");
-    }
-
-    private void Update()
-    {
         iD = dataListItems.id_dt;
         name = dataListItems.name_dt;
         description = dataListItems.description_dt;
         sprite = dataListItems.sprite_dt;
+        uiController = GameObject.Find("UIController");
+        ListItems.instace.listItems.Add(this);
+        if (ListItems.instace.listItems.Count == ListItems.instace.number_items)
+        {
+            ListItems.instace.gameObject.SetActive(false);
+        }
+    }
+    private void Awake()
+    {
+      
+    }
+
+    private void Update()
+    {
+        //iD = dataListItems.id_dt;
+        //name = dataListItems.name_dt;
+        //description = dataListItems.description_dt;
+        //sprite = dataListItems.sprite_dt;
     }
 
     public void GetInForItemInCatalog()

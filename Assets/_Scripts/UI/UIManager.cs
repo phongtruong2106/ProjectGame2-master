@@ -18,11 +18,12 @@ public class UIManager : MonoBehaviour
     private Button btn_Open_Inventory;
     [SerializeField]
     private Button btn_Close_Inventory;
-    [SerializeField] private GameObject CheckListItems;
+    public bool isButtonGet = false;
+/*    [SerializeField] private GameObject CheckListItems;*/
 
     private void Start()
     {
-        CheckListItems = GameObject.Find("Group_UI_Inventory_Catalog");
+        /*CheckListItems = GameObject.Find("ListManage");*/
     }
 
     private void Awake()
@@ -31,7 +32,11 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-       /* OpenIventoryPanelWithkeyF();*/
+       if(isButtonGet)
+        {
+            OpenIventoryPanel();
+            isButtonGet = false;
+        }
     }
 
     private void CreateInstance()
@@ -49,7 +54,10 @@ public class UIManager : MonoBehaviour
 
     public void OpenIventoryPanel()
     {
+       
         ui_inventory_panel.SetActive(true);
+        CheckListItems.instance.GetDataToListItems();
+        isButtonGet =true;
     }
 
     public void OpenItemSystemsPanel()
@@ -74,14 +82,14 @@ public class UIManager : MonoBehaviour
     {
         ui_Dialog_boxItems_panel.SetActive(false);
     }
-
-    /*private void OpenIventoryPanelWithkeyF()
+/*
+    private void OpenIventoryPanelWithkeyF()
     {
-        if(Input.GetKey(KeyCode.Tab))
+        if (Input.GetKey(KeyCode.Tab))
         {
             ui_inventory_panel.SetActive(true);
-           CheckListItems.GetComponent<CheckListItems>().GetDataToListItems();
-          
+            CheckListItems.GetComponent<CheckListItems>().GetDataToListItems();
+
         }
     }*/
 }

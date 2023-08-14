@@ -1,47 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class CheckListItems : MonoBehaviour
 {
+    public static CheckListItems instance;
     [SerializeField]
     private string filename;
-    public static CheckListItems Instance;
+    
     public ListItems itemsList;
     public bool isButtonGet = false;
 
     [SerializeField]
-    private GameObject ui_controller;
+    private GameObject ui_manager;
+    public List<InputEntry> data_List = new List<InputEntry>();
 
+    private void Awake()
+    {
+        CreateInstace();
+    }
+
+    public void CreateInstace()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
+    }
     private void Start()
     {
-        ui_controller = GameObject.Find("UIController");
+        data_List = DataManage.ReadFromJson<InputEntry>(filename);
+        ui_manager = GameObject.Find("UIManager");
     }
     private void Update()
     {
-        if(isButtonGet)
+        /*if(isButtonGet)
         {
             GetDataToListItems();
-            isButtonGet = false;
-        }
+            isButtonGet =false;
+        }*/
     }
     public void GetDataToListItems()
-    {
-        foreach (Checkitems items in itemsList.listItems)
+    { 
+        
+        foreach (Checkitems itemss in itemsList.listItems)
         {
-            items.gameObject.SetActive(false);
+            itemss.gameObject.SetActive(false);
         }
-        List<InputEntry> itemList = DataManage.ReadFromJson<InputEntry>(filename);
-        foreach (InputEntry item in itemList)
-        {
+       
+        foreach (InputEntry item in data_List)
+        { 
             foreach(Checkitems items in itemsList.listItems)
             {
-
+                
                 if (item.m_ID == items.iD)
                 {
                     Debug.Log(items.iD);
                     items.gameObject.SetActive(true);
-                    break; // Once a match is found, no need to continue looping
+                    break;
                 }
 
             }

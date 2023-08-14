@@ -47,7 +47,7 @@ public class PlayerState
     //xu ly Logic cua tat ca phuong thuc
     public virtual void LogicUpdate()
     {
-
+        
     }
 
     //thuc hien Tang Vat li

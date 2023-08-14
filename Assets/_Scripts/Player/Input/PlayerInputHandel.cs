@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandel : MonoBehaviour
 {
+    public static PlayerInputHandel instance;
     private PlayerInput playerInput;
     private Camera cam;
 
@@ -39,6 +40,11 @@ public class PlayerInputHandel : MonoBehaviour
         cam = Camera.main;
 
     }
+    public static PlayerInputHandel GetInstance()
+    {
+        return instance;
+    }
+
 
     private void Update() {
         //kiem tra thoi gian bat dau vao so voi thoi gian hien tai
@@ -58,7 +64,12 @@ public class PlayerInputHandel : MonoBehaviour
                 AttackInputs[(int)CombatInput.primary] = false; 
         }
     }
-
+/*
+    public void OnDialogue(InputAction.CallbackContext context)
+    {
+        Debug.Log("")
+    }
+*/
     public void OnSecondaryAttackInput(InputAction.CallbackContext context)
     {
         if(context.started) //neu thanh phan nay duoc goi

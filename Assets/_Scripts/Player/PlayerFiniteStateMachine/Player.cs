@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
         }
 
         private void Update() {
-           Core.LogicUpDate();
+            Core.LogicUpDate();
             StateMachine.CurrentState.LogicUpdate(); //cham trang thai hien tai 
         }
 

@@ -24,8 +24,6 @@ public class CheckRangeCutScenes : MonoBehaviour
             cutScenesTimelineObj.SetActive(true);
             Invoke(nameof(LaterUpdate), 3f);
             Invoke(nameof(StopCutscene), 4f);
-           
-
         }
     }
     private void StopCutscene()
