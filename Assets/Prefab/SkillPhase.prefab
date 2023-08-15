@@ -165,7 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3507fd48d4b22f040bbac24165fc66e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageRadius: 4
   isGravityOn: 0
   whatisGround:
     serializedVersion: 2
@@ -174,6 +173,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   BoxColliderMega: {fileID: 998174345240041337}
+  damagePosition: {fileID: 0}
 --- !u!1 &4884833395203193944
 GameObject:
   m_ObjectHideFlags: 0

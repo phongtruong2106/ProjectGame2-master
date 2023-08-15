@@ -10,6 +10,11 @@ public class CheckRangeCutScenes : MonoBehaviour
 
     public EnemyBoss1 enemyBoss1;
     public BossBattel bossBattel;
+
+    [Header("INK JSON")]
+    [SerializeField]
+    private TextAsset inkJSON;
+
     private void Start()
     {
         cutScenesTimelineObj.SetActive(false);
@@ -24,6 +29,10 @@ public class CheckRangeCutScenes : MonoBehaviour
             cutScenesTimelineObj.SetActive(true);
             Invoke(nameof(LaterUpdate), 3f);
             Invoke(nameof(StopCutscene), 4f);
+
+            DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+            PlayerInputHandel.instance.isMove = false;
+            Debug.Log(PlayerInputHandel.instance.isMove);
         }
     }
     private void StopCutscene()

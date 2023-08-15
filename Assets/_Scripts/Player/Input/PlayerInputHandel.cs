@@ -9,6 +9,7 @@ public class PlayerInputHandel : MonoBehaviour
     public static PlayerInputHandel instance;
     private PlayerInput playerInput;
     private Camera cam;
+    public bool isMove = true;
 
     public Vector2 RawDashDirectionInput{get; private set;} //Ve Huong Dash dau vao
     public Vector2 RawMovementInput{ get; private set;}
@@ -44,7 +45,10 @@ public class PlayerInputHandel : MonoBehaviour
     {
         return instance;
     }
-
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Update() {
         //kiem tra thoi gian bat dau vao so voi thoi gian hien tai
@@ -84,10 +88,13 @@ public class PlayerInputHandel : MonoBehaviour
     }
     public void OnMoveInput(InputAction.CallbackContext context)
     {
-        RawMovementInput = context.ReadValue<Vector2>();
+        if(isMove)
+        {
+            RawMovementInput = context.ReadValue<Vector2>();
 
-        NormInputX = Mathf.RoundToInt(RawMovementInput.x);
-        NormInputY = Mathf.RoundToInt(RawMovementInput.y);
+            NormInputX = Mathf.RoundToInt(RawMovementInput.x);
+            NormInputY = Mathf.RoundToInt(RawMovementInput.y);
+        }
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)

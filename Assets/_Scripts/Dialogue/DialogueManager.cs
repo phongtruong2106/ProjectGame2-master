@@ -7,11 +7,21 @@ using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour
 {
+    [Header("Params")]
+    [SerializeField] private float typingSpeed = 0.04f;
+
     [Header("Dialogue UI")]
     [SerializeField]
     private GameObject dialoguePanel;
     [SerializeField]
+    private GameObject continueIcon;
+    [SerializeField]
     private TextMeshProUGUI dialoggueText;
+    [SerializeField]
+    private TextMeshProUGUI displayNameText;
+    [SerializeField]
+    private Animator portraitAnimator;
+    private Animator layoutAnimator;
 
     [Header("Choices UI")]
     [SerializeField]
@@ -22,8 +32,17 @@ public class DialogueManager : MonoBehaviour
 
     private Story currentStory;
     public bool dialogueIsPlaying {  get; private set; }
+
+    private bool canContinueToNextLine = false;
+
+    private Coroutine displayLineCoroutine;
+
     [SerializeField]
     private Player player;
+
+    private const string SPEAKER_TAG = "speaker";
+    private const string PROTRAIT_TAG = "portrait";
+    private const string LAYOUT_TAG = "layout";
 
 
     private void Awake()
@@ -45,6 +64,8 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 
+        layoutAnimator = dialoguePanel.GetComponent<Animator>();
+
         //get all of the choices text
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
@@ -61,7 +82,9 @@ public class DialogueManager : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (canContinueToNextLine 
+            && currentStory.currentChoices.Count == 0 
+            && Input.GetKeyDown(KeyCode.Space))
         {
             ContinueStory();
         }
@@ -89,9 +112,13 @@ public class DialogueManager : MonoBehaviour
     {
         if(currentStory.canContinue)
         {
-            dialoggueText.text = currentStory.Continue();
+            if(displayLineCoroutine != null)
+            {
+                StopCoroutine(displayLineCoroutine);
+            }
 
-            DisplayChoise();
+            displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
+            HandleTags(currentStory.currentTags);
         }
         else
         {
@@ -99,6 +126,70 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private IEnumerator DisplayLine(string line)
+    {
+        dialoggueText.text = "";
+
+        continueIcon.SetActive(false);
+        HideChoices();
+
+        canContinueToNextLine = false;
+
+        foreach(char letter in line.ToCharArray())
+        {
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                dialoggueText.text = line;
+                break;
+            }
+            dialoggueText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+
+        continueIcon.SetActive(true);
+        DisplayChoise();
+
+        canContinueToNextLine = true;
+    }
+
+    private void HideChoices()
+    {
+        foreach (GameObject choiceButton in choices)
+        {
+            choiceButton.SetActive(false);
+        }
+    }
+
+    private void HandleTags(List<string> currentTags)
+    {
+        foreach(string tag in currentTags)
+        {
+            string[] splitTag = tag.Split(':');
+            if(splitTag.Length != 2)
+            {
+                Debug.LogError("Tag could not be appropriately parsed: " +  tag);
+            }
+            string tagKey = splitTag[0].Trim();
+            string tagValue = splitTag[1].Trim();
+
+            //handle the tag
+            switch (tagKey)
+            {
+                case SPEAKER_TAG:
+                    displayNameText.text = tagValue;
+                    break;
+                case PROTRAIT_TAG:
+                    portraitAnimator.Play(tagValue);
+                    break;
+                case LAYOUT_TAG:
+                    layoutAnimator.Play(tagValue);
+                    break;
+                default:
+                    Debug.LogWarning("Tga came in but is not cuttently being handled: " + tag);
+                    break;
+            }
+        }
+    }
     private void DisplayChoise()
     {
         List<Choice> currentChoices = currentStory.currentChoices;
@@ -133,6 +224,13 @@ public class DialogueManager : MonoBehaviour
 
     public void MakecChoice(int choiceIndex)
     {
-        currentStory.ChooseChoiceIndex(choiceIndex);
+        if(canContinueToNextLine)
+        {
+            currentStory.ChooseChoiceIndex(choiceIndex);
+            if(Input.GetKeyDown(KeyCode.Space)) {
+                ContinueStory();
+            }
+
+        }
     }
 }
