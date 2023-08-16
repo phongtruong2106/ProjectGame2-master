@@ -31,6 +31,4 @@ YaHallo! Chào chàng trai trẻ. #portrait:Yato_normal1 #layout:right
                          Thế nhé! ta đi đây #portrait:Yato_normal1 #layout:right
                          Khoan!! ta còn... #portrait:Player_1 #speaker: main ! #layout:left
                          ->END
-    *[....]
-        Đừng nghĩ nhiều quá ! Nỗ Não đấy =]] #portrait:Yato_normal #layout:right
 -> END

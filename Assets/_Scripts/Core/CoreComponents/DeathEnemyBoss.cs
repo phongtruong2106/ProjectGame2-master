@@ -34,9 +34,9 @@ public class DeathEnemyBoss : CoreComponent
     public BossBattel BossBattel;
     public EnemyBoss1 EnemyBoss1;
     public LootBag lootBag;
-    
+
     private AttackDetail attackDetail;
-  
+
 
     private void Start()
     {
@@ -51,10 +51,10 @@ public class DeathEnemyBoss : CoreComponent
 
     public void Die()
     {
-        if(!StatsEnemy.isHealth)
+        if (!StatsEnemy.isHealth)
         {
-             bossBattel.GetComponent<BossBattel>().animatorDie();
-             isdead = true;
+            bossBattel.GetComponent<BossBattel>().animatorDie();
+            isdead = true;
         }
 
         CheckPhaseDie();
@@ -62,14 +62,14 @@ public class DeathEnemyBoss : CoreComponent
 
     public void liveCutScenes()
     {
-         if(isdead)
-         {  
-            
+        if (isdead)
+        {
+
             Invoke(nameof(CutScenes), 2f);
             isCheckPhase = true;
             if (isCheckPhase)
             {
-                bossBattel.GetComponent <BossBattel>().animatorCloseDie();
+                bossBattel.GetComponent<BossBattel>().animatorCloseDie();
                 bossBattel.GetComponent<BossBattel>().animator.SetLayerWeight(1, 1f);
                 stats.ResetHealth(healthPhase);
                 attackDetail.attackPhaseProtitel(rangedAttack);
@@ -81,12 +81,12 @@ public class DeathEnemyBoss : CoreComponent
 
     private void CutScenes()
     {
-          cutSceneTimelineobj.SetActive(true);
+        cutSceneTimelineobj.SetActive(true);
     }
 
     public void CheckPhaseDie()
     {
-        if(isdeathPhase)
+        if (isdeathPhase)
         {
             foreach (var particle in deathParticles)
             {

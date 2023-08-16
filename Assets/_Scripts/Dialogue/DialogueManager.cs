@@ -95,8 +95,8 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
-
-         ContinueStory();
+        CheckRangeCutScenesNpc.instance.StopAction();
+        ContinueStory();
     }
 
     private IEnumerator ExitDialogueMode()
@@ -105,7 +105,7 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialoggueText.text = "";
-        player.enabled = true;
+        CheckRangeCutScenesNpc.instance.StartAction();
     }
 
     private void ContinueStory()

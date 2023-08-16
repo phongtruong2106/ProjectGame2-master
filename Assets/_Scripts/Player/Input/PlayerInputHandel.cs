@@ -10,6 +10,9 @@ public class PlayerInputHandel : MonoBehaviour
     private PlayerInput playerInput;
     private Camera cam;
     public bool isMove = true;
+    public bool isDash = true;
+    public bool isAttack = true;
+    public bool isjump = true;
 
     public Vector2 RawDashDirectionInput{get; private set;} //Ve Huong Dash dau vao
     public Vector2 RawMovementInput{ get; private set;}
@@ -58,15 +61,19 @@ public class PlayerInputHandel : MonoBehaviour
 
     public void OnPrimaryAttackInput(InputAction.CallbackContext context)
     {
-        if(context.started) //neu thanh phan nay duoc goi
+        if(isAttack)
         {
+            if(context.started) //neu thanh phan nay duoc goi
+            {
                 AttackInputs[(int)CombatInput.primary] = true; //lay phan tju trong combat Input 
 
-        }
-        if(context.canceled)
-        {
+            }
+            if(context.canceled)
+            {
                 AttackInputs[(int)CombatInput.primary] = false; 
+            }
         }
+        
     }
 /*
     public void OnDialogue(InputAction.CallbackContext context)
@@ -78,12 +85,12 @@ public class PlayerInputHandel : MonoBehaviour
     {
         if(context.started) //neu thanh phan nay duoc goi
         {
-                AttackInputs[(int)CombatInput.secondary] = true; //lay phan tju trong combat Input 
+            AttackInputs[(int)CombatInput.secondary] = true; //lay phan tju trong combat Input 
 
         }
         if(context.canceled)
         {
-                AttackInputs[(int)CombatInput.secondary] = false; 
+            AttackInputs[(int)CombatInput.secondary] = false; 
         }
     }
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -99,15 +106,19 @@ public class PlayerInputHandel : MonoBehaviour
 
     public void OnJumpInput(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if(isjump)
         {
-            JumpInput = true; //khi nhan vao thi Jump = true
-            JumpInputStop = false;
-            jumpInputStartTime = Time.time;
-        }
-        if(context.canceled)
-        {
-            JumpInputStop = true;
+            if(context.started)
+            {
+                JumpInput = true; //khi nhan vao thi Jump = true
+                JumpInputStop = false;
+                jumpInputStartTime = Time.time;
+            }
+            if(context.canceled)
+            {
+                JumpInputStop = true;
+            }
+
         }
     }
 
@@ -126,29 +137,51 @@ public class PlayerInputHandel : MonoBehaviour
     //Create Function input Dash
     public void OnDashInput(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if (isDash) 
         {
-            DashInput = true;
-            DashInputStop = false;
-            dashInputStartTime = Time.time;
-        }
-        else if(context.canceled)
-        {
-            DashInputStop = true;
+            if (context.started)
+            {
+                DashInput = true;
+                DashInputStop = false;
+                dashInputStartTime = Time.time;
+            }
+            else if(context.canceled)
+            {
+                DashInputStop = true;
+            }
+            
         }
     }
 
+    public void HideIsAction()
+    {
+        isAttack = false;
+        isDash = false;
+        isjump = false;
+        isMove  = false;
+    }
+    public void ShowIsAction()
+    {
+        isMove = true;
+        isDash = true;
+        isjump = true;
+        isAttack = true;
+    }
     //dau vao huong Dash
     public void OnDashDirectionInput(InputAction.CallbackContext context)
-    {   
-          RawDashDirectionInput = context.ReadValue<Vector2>();
-
-        if(playerInput.currentControlScheme == "Keyboard")
+    {
+        if (isDash)
         {
-            RawDashDirectionInput = cam.ScreenToWorldPoint(new Vector3(cam.pixelWidth - RawDashDirectionInput.x, cam.pixelHeight - RawDashDirectionInput.y, 1.9f)) - transform.position;
-        }
+            RawDashDirectionInput = context.ReadValue<Vector2>();
 
-        DashDirectionInput = Vector2Int.RoundToInt(RawDashDirectionInput.normalized);
+            if(playerInput.currentControlScheme == "Keyboard")
+            {
+                RawDashDirectionInput = cam.ScreenToWorldPoint(new Vector3(cam.pixelWidth - RawDashDirectionInput.x, cam.pixelHeight - RawDashDirectionInput.y, 1.9f)) - transform.position;
+            }
+
+            DashDirectionInput = Vector2Int.RoundToInt(RawDashDirectionInput.normalized);
+            
+        }
     }
 
     //tao phuong thuc su dung Input Jump

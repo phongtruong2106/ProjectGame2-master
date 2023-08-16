@@ -30,12 +30,13 @@ public class DialogueTrigger : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.F))
             {
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
-                player.enabled = false;
+                CheckRangeCutScenesNpc.instance.StopAction();
             }
         }
         else
         {
             visualCue.SetActive(false);
+
         }
     }
 
