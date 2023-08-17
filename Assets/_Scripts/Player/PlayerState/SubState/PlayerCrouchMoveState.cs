@@ -24,7 +24,7 @@ public class PlayerCrouchMoveState : PlayerGroundedState
 
     public override void LogicUpdate()
     {
-        base.LogicUpdate();
+       /* base.LogicUpdate();
             
         if(!isExitingState)
         {
@@ -40,7 +40,7 @@ public class PlayerCrouchMoveState : PlayerGroundedState
                 stateMachine.ChangeState(player.MoveState);
             }
             
-        }
+        }*/
     }
 
 }

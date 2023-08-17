@@ -21,7 +21,7 @@ public class PlayerCrouchIdleState : PlayerGroundedState
     }
     public override void LogicUpdate()
     {
-        base.LogicUpdate();
+        /*base.LogicUpdate();
         if(!isExitingState)
         {
             if(XInput != 0) //neu dau vao cua toa do x khac 0 ( dang duy chuyen) -> chuyen sang trang thai move
@@ -32,7 +32,7 @@ public class PlayerCrouchIdleState : PlayerGroundedState
             {
                 stateMachine.ChangeState(player.IdieState);
             }
-        }
+        }*/
     }
 
 }

@@ -64,14 +64,23 @@ public class CheckRangeCutScenesNpc : MonoBehaviour
     }
     public void StartAction()
     {
-        cutScenesTimelineObj.SetActive(false);
-        PlayerInputHandel.GetInstance().isjump = true;
-        PlayerInputHandel.GetInstance().isAttack = true;
-        PlayerInputHandel.GetInstance().isDash = true;
-        if(Npc_obj != null)
+        if(cutScenesTimelineObj == null)
         {
-            Destroy(Npc_obj);
+            if(cutScenesTimelineObj != null)
+            {
+                 cutScenesTimelineObj.SetActive(false);
+            }
+            
+            playerData.movementVelocity = 4f;
+            PlayerInputHandel.GetInstance().isjump = true;
+            PlayerInputHandel.GetInstance().isAttack = true;
+            PlayerInputHandel.GetInstance().isDash = true;
+            if(Npc_obj != null)
+            {
+                 Destroy(Npc_obj);
+            }
         }
+        
 
     }
 }

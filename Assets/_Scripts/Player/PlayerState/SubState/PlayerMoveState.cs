@@ -35,10 +35,7 @@ public class PlayerMoveState : PlayerGroundedState
             {
                 stateMachine.ChangeState(player.IdieState);
             }
-            else if(YInput == -1)
-            {
-                stateMachine.ChangeState(player.CrouchMoveState);
-            }
+         
 
         }
     }

@@ -72,14 +72,14 @@ public class PlayerLedgeClimbState : PlayerState
 
         if(isAnimationFinished)
         {
-            if(isTouchingCeiling)
+            /*if(isTouchingCeiling)
             {
                 stateMachine.ChangeState(player.CrouchIdleState);
             }
             else
-            {
+            {*/
                 stateMachine.ChangeState(player.IdieState);
-            }
+           /* }*/
         }
         else
         {
