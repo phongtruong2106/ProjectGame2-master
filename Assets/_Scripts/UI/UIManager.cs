@@ -19,12 +19,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Button btn_Close_Inventory;
     public bool isButtonGet = false;
-/*    [SerializeField] private GameObject CheckListItems;*/
-
-    private void Start()
-    {
-        /*CheckListItems = GameObject.Find("ListManage");*/
-    }
 
     private void Awake()
     {
