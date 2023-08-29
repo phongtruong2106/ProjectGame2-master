@@ -1,16 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static System.TimeZoneInfo;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class ChangeScenes : MonoBehaviour
 {
-    public string nameScene;
+    public string sceneToLoad;
+    public Vector2 playerPosition;
+    public VectorValue playerStorage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.CompareTag("Player") && !collision.isTrigger)
         {
-            ScenesManager.instance.LoadScene(nameScene);
+            playerStorage.initialValue = playerPosition;
+            ScenesManager.instance.LoadScene(sceneToLoad);
         }
     }
+
 }

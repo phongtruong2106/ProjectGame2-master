@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     private GameObject ui_ItemSystem_panel;
     [SerializeField]
     private GameObject ui_Dialog_boxItems_panel;
+    [SerializeField]
+    private GameObject ui_NotificationDataSave_panel;
     [Space]
     [SerializeField]
     private Button btn_Open_Inventory;
@@ -64,6 +66,11 @@ public class UIManager : MonoBehaviour
         ui_Dialog_boxItems_panel.SetActive(true);
     }
 
+    public void OpenNotificationPanel()
+    {
+        ui_NotificationDataSave_panel.SetActive(true);
+    }
+
     public void CloseIventoryPanel()
     {
         ui_inventory_panel.SetActive(false);
@@ -76,14 +83,20 @@ public class UIManager : MonoBehaviour
     {
         ui_Dialog_boxItems_panel.SetActive(false);
     }
-/*
-    private void OpenIventoryPanelWithkeyF()
+    public void CloseNotificationPanel()
     {
-        if (Input.GetKey(KeyCode.Tab))
-        {
-            ui_inventory_panel.SetActive(true);
-            CheckListItems.GetComponent<CheckListItems>().GetDataToListItems();
+        ui_NotificationDataSave_panel.SetActive(false);
+    }
 
-        }
-    }*/
+
+    /*
+        private void OpenIventoryPanelWithkeyF()
+        {
+            if (Input.GetKey(KeyCode.Tab))
+            {
+                ui_inventory_panel.SetActive(true);
+                CheckListItems.GetComponent<CheckListItems>().GetDataToListItems();
+
+            }
+        }*/
 }

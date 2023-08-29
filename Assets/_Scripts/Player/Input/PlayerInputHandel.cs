@@ -8,7 +8,7 @@ public class PlayerInputHandel : MonoBehaviour
 {
     public static PlayerInputHandel instance;
     private PlayerInput playerInput;
-    private Camera cam;
+    public Camera cam;
     public bool isMove = true;
     public bool isDash = true;
     public bool isAttack = true;
@@ -35,12 +35,14 @@ public class PlayerInputHandel : MonoBehaviour
     private float jumpInputStartTime;
     private float dashInputStartTime;
 
+    public VectorValue startingPosition;
+
     private void Start() {
         playerInput = GetComponent<PlayerInput>();
 
         int count = Enum.GetValues(typeof(CombatInput)).Length;
         AttackInputs = new bool[count];
-
+        transform.position = startingPosition.initialValue;
         cam = Camera.main;
 
     }

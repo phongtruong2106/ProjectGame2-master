@@ -37,6 +37,7 @@ public class ScenesManager : MonoBehaviour
         await Task.Delay(1000);
 
         scene.allowSceneActivation = true;
+
         _loaderCanvar.SetActive(false);
     }
 }
