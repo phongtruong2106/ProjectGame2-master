@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     private bool respawn;
     private CinemachineVirtualCamera CVC;
 
+    [SerializeField]
+    private VectorValue playerPosititon;
+
     private void Start() {
         CVC = GameObject.Find("Player Camera").GetComponent<CinemachineVirtualCamera>();
     }
@@ -36,7 +39,7 @@ public class GameManager : MonoBehaviour
        if(Time.time >= respawnTimeStart + respawnTime && respawn)
         {
             var playerTemp =  Instantiate(player, respawnPoint);
-            playerTemp.transform.position = respawnPoint.position; // di chuyển player tới respawnPoint
+            player.transform.position = playerPosititon.initialValue;// di chuyển player tới respawnPoint
             CVC.m_Follow = playerTemp.transform;
             respawn = false;
         }

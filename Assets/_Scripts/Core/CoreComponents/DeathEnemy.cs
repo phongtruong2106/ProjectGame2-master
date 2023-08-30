@@ -12,7 +12,6 @@ public class DeathEnemy : CoreComponent
 
     private StatsEnemy Stats => stats ? stats : core.GetCoreComponent(ref stats);
     private StatsEnemy stats;
-
     public void Die()
     {
         foreach (var particle in deathParticles)

@@ -533,6 +533,7 @@ GameObject:
   - component: {fileID: 5687562062700657304}
   - component: {fileID: 1772656555559969454}
   - component: {fileID: 407758276905472907}
+  - component: {fileID: 1044037901653766912}
   m_Layer: 9
   m_Name: Enemy1 1
   m_TagString: Untagged
@@ -550,8 +551,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -13.462144, y: -5.720828, z: -0.17355102}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8887308226914401684}
   - {fileID: 1492798607847474477}
@@ -742,6 +743,36 @@ MonoBehaviour:
   stunStateData: {fileID: 11400000, guid: 37343913d2c0f1a41a84687972b8f513, type: 2}
   deadStateData: {fileID: 11400000, guid: 0d279a2c492bb00449a623c46f2dfe6e, type: 2}
   meleeAttackPosition: {fileID: 3465506560086953661}
+--- !u!114 &1044037901653766912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810222752728224037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 000000001b46e89aa5cddb4501b07c772b156847a10ea885ad14e27a630aa5a939419c50998a3fba8fc189f4df9a844a
+  m_ShapePath:
+  - {x: -0.15999985, y: -0.16000003, z: 0}
+  - {x: -0.11822176, y: -0.010593832, z: 0}
+  - {x: 0.06251764, y: 0.027702749, z: 0}
+  - {x: 0.05555439, y: -0.16000003, z: 0}
+  m_ShapePathHash: 1213394933
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -1143044
+  m_LocalBounds:
+    m_Center: {x: -0.048741102, y: -0.06614864, z: 0}
+    m_Extent: {x: 0.111258745, y: 0.09385139, z: 0}
 --- !u!1 &8673086034692333435
 GameObject:
   m_ObjectHideFlags: 0

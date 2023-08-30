@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using static System.TimeZoneInfo;
-using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+
 
 public class ChangeScenes : MonoBehaviour
 {

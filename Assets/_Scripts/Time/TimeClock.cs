@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 public class TimeClock : MonoBehaviour
@@ -14,6 +15,9 @@ public class TimeClock : MonoBehaviour
     public Light2D globallight;
     public Light2D[] Clamdlight;
     public Light2D[] houselight;
+    public Volume volumeLightGlobal;
+
+    public GameObject[] listItemNight;
     [SerializeField]
     private DataTime dataTime;
 
@@ -61,6 +65,11 @@ public class TimeClock : MonoBehaviour
             {
                 ligth.intensity = Mathf.Lerp(ligth.intensity, 1.09f, Time.deltaTime * 1f);
             }
+            foreach(GameObject itemsList in listItemNight)
+            {
+                itemsList.SetActive(true);
+            }
+            volumeLightGlobal.weight = 1;
         }
         else
         {
@@ -74,6 +83,11 @@ public class TimeClock : MonoBehaviour
             {
                 ligth.intensity = Mathf.Lerp(ligth.intensity, 0f, Time.deltaTime * 1f);
             }
+            foreach (GameObject itemsList in listItemNight)
+            {
+                itemsList.SetActive(false);
+            }
+            volumeLightGlobal.weight = 0;
         }
     }
 
