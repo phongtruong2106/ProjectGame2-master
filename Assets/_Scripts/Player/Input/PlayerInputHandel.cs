@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Photon.Pun;
 
 public class PlayerInputHandel : MonoBehaviour
 {
     public static PlayerInputHandel instance;
     private PlayerInput playerInput;
-    public Camera cam;
+    public GameObject cam;
     public bool isMove = true;
     public bool isDash = true;
     public bool isAttack = true;
@@ -43,8 +44,6 @@ public class PlayerInputHandel : MonoBehaviour
         int count = Enum.GetValues(typeof(CombatInput)).Length;
         AttackInputs = new bool[count];
         transform.position = startingPosition.initialValue;
-        cam = Camera.main;
-
     }
     public static PlayerInputHandel GetInstance()
     {
@@ -178,7 +177,7 @@ public class PlayerInputHandel : MonoBehaviour
 
             if(playerInput.currentControlScheme == "Keyboard")
             {
-                RawDashDirectionInput = cam.ScreenToWorldPoint(new Vector3(cam.pixelWidth - RawDashDirectionInput.x, cam.pixelHeight - RawDashDirectionInput.y, 1.9f)) - transform.position;
+                RawDashDirectionInput = cam.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(cam.GetComponent<Camera>().pixelWidth - RawDashDirectionInput.x, cam.GetComponent<Camera>().pixelHeight - RawDashDirectionInput.y, 1.9f)) - transform.position;
             }
 
             DashDirectionInput = Vector2Int.RoundToInt(RawDashDirectionInput.normalized);

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class WeaponAnimationToWeapon : MonoBehaviour
 {
     private Weapon weapon;
-
+  
     private void Start() {
         weapon = GetComponentInParent<Weapon>();
     }
@@ -37,6 +38,8 @@ public class WeaponAnimationToWeapon : MonoBehaviour
 
     private void AnimationActionTrigger()
     {
-        weapon.AnimationActionTrigger();
+        
+            weapon.AnimationActionTrigger();
+        
     }
 }

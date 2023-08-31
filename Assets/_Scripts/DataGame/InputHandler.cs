@@ -62,4 +62,9 @@ public class InputHandler: MonoBehaviour
 
 
     }
+
+    public void LoadScene()
+    {
+        
+    }
 }

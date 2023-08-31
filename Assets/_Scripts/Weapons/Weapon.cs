@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,17 @@ public class Weapon : MonoBehaviour
      protected Animator weaponAnimator;
      protected PlayerAttackState state;
      protected Core core;
+    [SerializeField]
+    private PhotonView view;
 
-     
 
      protected int attackCounter; //bo dem 
 
-     protected virtual void Awake()
+    private void Start()
+    {
+        view = GetComponent<PhotonView>();
+    }
+    protected virtual void Awake()
      {
         baseAnimator = transform.Find("Base").GetComponent<Animator>();
         weaponAnimator = transform.Find("Weapon").GetComponent<Animator>();
@@ -24,36 +30,42 @@ public class Weapon : MonoBehaviour
 
      public virtual void EnterWeapon()
      {
-        gameObject.SetActive(true);
-
-        if(attackCounter >= weaponData.amountOfAttacks) //neu toi so3 thi attackCounter tro ve 0
+        if(view.IsMine)
         {
-           attackCounter = 0;
+            gameObject.SetActive(true);
+        
+            if(attackCounter >= weaponData.amountOfAttacks) //neu toi so3 thi attackCounter tro ve 0
+            {
+               attackCounter = 0;
+            }
+
+            baseAnimator.SetBool("attack",true);
+            weaponAnimator.SetBool("attack", true);
+
+
+            baseAnimator.SetInteger("attackCounter", attackCounter);
+            weaponAnimator.SetInteger("attackCounter", attackCounter); //thiet lap bo dem attack
         }
-
-        baseAnimator.SetBool("attack",true);
-        weaponAnimator.SetBool("attack", true);
-
-
-        baseAnimator.SetInteger("attackCounter", attackCounter);
-        weaponAnimator.SetInteger("attackCounter", attackCounter); //thiet lap bo dem attack
      }
 
      public virtual void ExitWeapon()
      {
-        baseAnimator.SetBool("attack",false);
-        weaponAnimator.SetBool("attack", false);
+        
+            baseAnimator.SetBool("attack",false);
+            weaponAnimator.SetBool("attack", false);
+            
+            attackCounter++; //cong don den so thu tu cua lan danh animation vidu 0 -> thuc hien don danh thu 1 , 0 tang len 1 -> thuc hien don danh thu 2
 
-        attackCounter++; //cong don den so thu tu cua lan danh animation vidu 0 -> thuc hien don danh thu 1 , 0 tang len 1 -> thuc hien don danh thu 2
+            gameObject.SetActive(false);
 
-        gameObject.SetActive(false);
+        
      }
 
     #region Animation Trigger
 
     public virtual void AnimationFinishTrigger()
     {
-        state.AnimationFinishTrigger();
+        state.AnimationFinishTrigger();     
     }
 
    public virtual void AnimationStartMovementTrigger()

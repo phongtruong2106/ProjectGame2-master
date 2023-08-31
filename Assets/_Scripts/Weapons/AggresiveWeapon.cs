@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Photon.Pun;
 
 public class AggresiveWeapon : Weapon
 {
     protected Movement Movement{get => movement ?? core.GetCoreComponent(ref movement);}
-     private Movement movement;
+    private Movement movement;
     protected SO_AggressiveWeaponData aggressiveWeaponData;
     private List<IDamageable> detectedDamageables = new List<IDamageable>();
     private List<IknockBackable> detectedKnockbackables = new List<IknockBackable>();
 
+    private void Start()
+    {
+    }
     protected override void Awake()
     {
         base.Awake();
@@ -27,10 +31,10 @@ public class AggresiveWeapon : Weapon
 
     public override void AnimationActionTrigger()
     {
-        base.AnimationActionTrigger();
-        CheckMeleeAttack();
+       
+          base.AnimationActionTrigger();
+          CheckMeleeAttack(); 
     }
-
     private void  CheckMeleeAttack()
     {
         WeaponAttackDetails details  = aggressiveWeaponData.AttackDetails[attackCounter];
@@ -43,7 +47,6 @@ public class AggresiveWeapon : Weapon
         {
             item.Knockback(details.knockbackAngle, details.knockbackStrenght, Movement.FacingDirection);
         }
-
     }
     public void AddToDetected(Collider2D collision)
     {

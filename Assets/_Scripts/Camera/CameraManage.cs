@@ -12,9 +12,13 @@ public class CameraManage : MonoBehaviour
     private CinemachineBasicMultiChannelPerlin _cbmcp;
     private float stratingIntensity;
     private float TimeShakeTotal;
+    private GameObject playerTarget;
+
     private void Start() {
         _cbmcp = cameraObj.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _cbmcp.m_AmplitudeGain = 0f;
+
+
     }
     private void Awake()
     {
@@ -67,5 +71,12 @@ public class CameraManage : MonoBehaviour
                 _cbmcp.m_AmplitudeGain = 0f;
                 Mathf.Lerp(stratingIntensity, 0f, timerShake / TimeShakeTotal);
         }*/
+    }
+
+    public void SetPlayerTarget(GameObject player)
+    {
+        playerTarget = player;
+        // Gán đối tượng Player vào cameraObj để theo dõi
+        cameraObj.Follow = playerTarget.transform;
     }
 }

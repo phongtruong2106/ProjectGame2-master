@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,6 @@ public class Movement : CoreComponent
     public int FacingDirection{get; private set;}
     public bool CanSetVelocity{get; set;}
     private Vector2 workspace;
-
-
     protected override void Awake()
     {
         base.Awake();
@@ -71,16 +70,16 @@ public class Movement : CoreComponent
         
         public void CheckIfShouldFlip(int XInput)
         {
-            if(XInput != 0 && XInput != FacingDirection)
-            {
-                Flip();
-            }
+                if(XInput != 0 && XInput != FacingDirection)
+                {
+                    Flip();
+                }
         }
 
         public void Flip()
         {
-            FacingDirection *= -1;
-            RB.transform.Rotate(0.0f, 180.0f, 0.0f);
+           FacingDirection *= -1;
+           RB.transform.Rotate(0.0f, 180.0f, 0.0f);
         }
     #endregion
 }
