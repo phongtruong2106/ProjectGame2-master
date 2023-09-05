@@ -29,8 +29,7 @@ public class Player : MonoBehaviour
     //Attack State
     public PlayerAttackState PrimaryAttackState { get; private set; }
     public PlayerAttackState SecondaryAttackState { get; private set; }
-    [SerializeField]
-    private PhotonView view;
+    public PhotonView view;
 
     [SerializeField]
     private PlayerData playerData;
@@ -94,6 +93,7 @@ public class Player : MonoBehaviour
     private void Update() {
         if(view.IsMine)
         {
+
             Core.LogicUpDate();
             StateMachine.CurrentState.LogicUpdate(); //cham trang thai hien tai 
         }
@@ -135,9 +135,12 @@ public class Player : MonoBehaviour
 
 
     private void AnimationFinishTrigger()
-    {
-       
+    {   
+       if(view.IsMine)
+        {
             StateMachine.CurrentState.AnimationFinishTrigger();
+
+        }
     } 
       
     #endregion

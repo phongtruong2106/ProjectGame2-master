@@ -40,10 +40,10 @@ public class PlayerInputHandel : MonoBehaviour
 
     private void Start() {
         playerInput = GetComponent<PlayerInput>();
-
         int count = Enum.GetValues(typeof(CombatInput)).Length;
         AttackInputs = new bool[count];
         transform.position = startingPosition.initialValue;
+        cam = GameObject.Find("Main Camera");
     }
     public static PlayerInputHandel GetInstance()
     {
@@ -171,8 +171,6 @@ public class PlayerInputHandel : MonoBehaviour
     //dau vao huong Dash
     public void OnDashDirectionInput(InputAction.CallbackContext context)
     {
-        if (isDash)
-        {
             RawDashDirectionInput = context.ReadValue<Vector2>();
 
             if(playerInput.currentControlScheme == "Keyboard")
@@ -181,8 +179,6 @@ public class PlayerInputHandel : MonoBehaviour
             }
 
             DashDirectionInput = Vector2Int.RoundToInt(RawDashDirectionInput.normalized);
-            
-        }
     }
 
     //tao phuong thuc su dung Input Jump

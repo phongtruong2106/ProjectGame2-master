@@ -56,35 +56,39 @@ public class PlayerGroundedState : PlayerState
     }
     public override void LogicUpdate()
     {
-        base.LogicUpdate();
+        if(player.view.IsMine)
+        {
 
-        // dinh nghia cac phan tu
-        XInput = player.InputHandler.NormInputX;
-        YInput = player.InputHandler.NormInputY;
-        jumpInput = player.InputHandler.JumpInput;
-        grabInput = player.InputHandler.GrabInput;
-        dashInput = player.InputHandler.DashInput;
+            base.LogicUpdate();
 
-        if(player.InputHandler.AttackInputs[(int)CombatInput.primary] && !isTouchingCeiling){
-            stateMachine.ChangeState(player.PrimaryAttackState);
-        }
-        //xu ly nghiep vu logic cua ca phan tu da duoc dinh nghia
-        else if(jumpInput && player.JumpState.CanJump() && !isTouchingCeiling)
-        {
-            stateMachine.ChangeState(player.JumpState); //thuc hien jump chuyen trang thai nhay
-        } 
-        else if(!isGrounded)
-        {
-            player.InAirState.StartCoyoteTime();
-            // player.JumpState.DecreaseAmountOfJumpsLeft();
-            stateMachine.ChangeState(player.InAirState);
-        }else if(isTouchingWall && grabInput && isTouchingLedge)
-        {
-            stateMachine.ChangeState(player.WallGrabState);
-        }
-         else if(dashInput && player.DashState.CheckIfCanDash() && !isTouchingCeiling) //thuc hien chuyen doi trang thai Dash 
-        {
-            stateMachine.ChangeState(player.DashState);
+            // dinh nghia cac phan tu
+            XInput = player.InputHandler.NormInputX;
+            YInput = player.InputHandler.NormInputY;
+            jumpInput = player.InputHandler.JumpInput;
+            grabInput = player.InputHandler.GrabInput;
+            dashInput = player.InputHandler.DashInput;
+
+            if(player.InputHandler.AttackInputs[(int)CombatInput.primary] && !isTouchingCeiling){
+                stateMachine.ChangeState(player.PrimaryAttackState);
+            }
+            //xu ly nghiep vu logic cua ca phan tu da duoc dinh nghia
+            else if(jumpInput && player.JumpState.CanJump() && !isTouchingCeiling)
+            {
+                stateMachine.ChangeState(player.JumpState); //thuc hien jump chuyen trang thai nhay
+            } 
+            else if(!isGrounded)
+            {
+                player.InAirState.StartCoyoteTime();
+                // player.JumpState.DecreaseAmountOfJumpsLeft();
+                stateMachine.ChangeState(player.InAirState);
+            }else if(isTouchingWall && grabInput && isTouchingLedge)
+            {
+                stateMachine.ChangeState(player.WallGrabState);
+            }
+             else if(dashInput && player.DashState.CheckIfCanDash() && !isTouchingCeiling) //thuc hien chuyen doi trang thai Dash 
+            {
+                stateMachine.ChangeState(player.DashState);
+            }
         }
     }
 

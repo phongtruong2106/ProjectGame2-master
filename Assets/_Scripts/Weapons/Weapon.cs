@@ -22,10 +22,14 @@ public class Weapon : MonoBehaviour
     }
     protected virtual void Awake()
      {
-        baseAnimator = transform.Find("Base").GetComponent<Animator>();
-        weaponAnimator = transform.Find("Weapon").GetComponent<Animator>();
+        if(view.IsMine)
+        {
+            baseAnimator = transform.Find("Base").GetComponent<Animator>();
+            weaponAnimator = transform.Find("Weapon").GetComponent<Animator>();
 
-        gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
+        
      }
 
      public virtual void EnterWeapon()
@@ -50,13 +54,16 @@ public class Weapon : MonoBehaviour
 
      public virtual void ExitWeapon()
      {
-        
-            baseAnimator.SetBool("attack",false);
-            weaponAnimator.SetBool("attack", false);
+            if(view.IsMine)
+            {
+                baseAnimator.SetBool("attack",false);
+                weaponAnimator.SetBool("attack", false);
             
-            attackCounter++; //cong don den so thu tu cua lan danh animation vidu 0 -> thuc hien don danh thu 1 , 0 tang len 1 -> thuc hien don danh thu 2
+                attackCounter++; //cong don den so thu tu cua lan danh animation vidu 0 -> thuc hien don danh thu 1 , 0 tang len 1 -> thuc hien don danh thu 2
 
-            gameObject.SetActive(false);
+                gameObject.SetActive(false);
+
+            }
 
         
      }
@@ -65,7 +72,11 @@ public class Weapon : MonoBehaviour
 
     public virtual void AnimationFinishTrigger()
     {
-        state.AnimationFinishTrigger();     
+        if(view.IsMine)
+        {
+            state.AnimationFinishTrigger();     
+
+        }
     }
 
    public virtual void AnimationStartMovementTrigger()
@@ -79,12 +90,19 @@ public class Weapon : MonoBehaviour
 
    public virtual void AnimationTurnOffFlipTrigger()
    {
-      state.SetFlipCheck(false);
+        if(view.IsMine)
+        {
+             state.SetFlipCheck(false);
+        }
    }
 
    public virtual void AnimationTurnOnFlipTrigger()
    {
-      state.SetFlipCheck(true);
+        if(view.IsMine)
+        {
+            state.SetFlipCheck(true);
+
+        }
    }
 
    public virtual void AnimationActionTrigger()

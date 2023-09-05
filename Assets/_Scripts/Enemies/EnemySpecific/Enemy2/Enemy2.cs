@@ -41,7 +41,6 @@ public class Enemy2 : Entity
     [SerializeField]
     private Transform rangedAttackPosition;
 
-    [PunRPC]
     public override void Awake() {
         base.Awake();
 
@@ -54,9 +53,6 @@ public class Enemy2 : Entity
         deadState = new E2_DeadState(this, stateMachine, "dead",deadStateData, this);
         dodgeState = new E2_DodgeState(this, stateMachine, "dodge", dodgeStateData, this);
         rangeAttackState = new E2_RangeAttackState(this, stateMachine, "rangedAttack",rangedAttackPosition ,rangeAttaclStateData, this);
-
-        PhotonView photonview = PhotonView.Get(this);
-        photonview.RPC("A", RpcTarget.All);
     }
 
    
