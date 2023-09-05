@@ -81,11 +81,17 @@ public class Weapon : MonoBehaviour
 
    public virtual void AnimationStartMovementTrigger()
    {
-      state.SetPlayerVelocity(weaponData.movementSpeed[attackCounter]);
+        if(view.IsMine)
+        {
+            state.SetPlayerVelocity(weaponData.movementSpeed[attackCounter]);
+        }
    }
    public virtual void AnimationStopMovementTrigger()
    {
-      state.SetPlayerVelocity(0f);
+        if(view.IsMine)
+        {
+            state.SetPlayerVelocity(0f);
+        }
    }
 
    public virtual void AnimationTurnOffFlipTrigger()
@@ -107,7 +113,10 @@ public class Weapon : MonoBehaviour
 
    public virtual void AnimationActionTrigger()
    {
-      state.SetFlipCheck(true);
+        if(view.IsMine)
+        {
+            state.SetFlipCheck(true);
+        }
    }
     #endregion
 
