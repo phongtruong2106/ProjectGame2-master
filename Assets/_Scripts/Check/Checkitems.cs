@@ -9,12 +9,13 @@ public class Checkitems : MonoBehaviour
     public string nname;
     public string description;
     public Sprite sprite;
-
+    public Image spriteAd;
 
     [SerializeField]
     private DataListItems dataListItems;
     [SerializeField]
     private GameObject uiController;
+    
 
     private void Start()
     {

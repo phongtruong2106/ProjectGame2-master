@@ -41,6 +41,9 @@ MonoBehaviour:
   - RespawnSpaceship
   - Awake
   - CheckMeleeAttack
+  - Die
+  - Start
+  - Update
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

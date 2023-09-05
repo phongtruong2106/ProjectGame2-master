@@ -13,8 +13,12 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField]
     private TextAsset inkJSON;
 
-    [SerializeField]
-    private Player player;
+    public GameObject player;
+
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+    }
 
     private void Awake()
     {

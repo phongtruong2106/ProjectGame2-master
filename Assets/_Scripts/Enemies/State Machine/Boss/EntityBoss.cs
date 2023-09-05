@@ -1,7 +1,8 @@
-
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class EntityBoss : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class EntityBoss : MonoBehaviour
         stateMachine = new FiniteStateMachine();
     }
 
+    [PunRPC]
     public virtual void Update()
     {
         Core.LogicUpDate();
@@ -58,6 +60,10 @@ public class EntityBoss : MonoBehaviour
         {
             ResetStunResistanceBoss();
         }
+        PhotonView photonView = PhotonView.Get(this);
+
+        // Gọi RPC để thông báo enemy đã chết cho các máy chơi khác
+        photonView.RPC("State", RpcTarget.All);
 
     }
 
