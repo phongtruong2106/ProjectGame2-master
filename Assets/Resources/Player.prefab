@@ -1223,7 +1223,7 @@ MonoBehaviour:
   - {x: -0.06731987, y: -0.28814793, z: 0}
   m_ShapePathHash: 1696187229
   m_Mesh: {fileID: 0}
-  m_InstanceId: 208040
+  m_InstanceId: 289820
   m_LocalBounds:
     m_Center: {x: -0.11759281, y: -0.14588189, z: 0}
     m_Extent: {x: 0.055888176, y: 0.14991069, z: 0}
@@ -1243,7 +1243,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 2
   observableSearch: 2
   ObservedComponents:
   - {fileID: 8088274360429537071}
@@ -1268,17 +1268,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PositionModel:
     SynchronizeEnabled: 1
-    TeleportEnabled: 1
+    TeleportEnabled: 0
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 2
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
+    ExtrapolateOption: 1
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
   m_RotationModel:
-    SynchronizeEnabled: 1
+    SynchronizeEnabled: 0
     InterpolateOption: 0
     InterpolateRotateTowardsSpeed: 180
     InterpolateLerpSpeed: 5
@@ -1348,7 +1348,7 @@ MonoBehaviour:
     SynchronizeType: 1
     Name: xVelocity
   m_SynchronizeLayers:
-  - SynchronizeType: 1
+  - SynchronizeType: 0
     LayerIndex: 0
 --- !u!114 &7374300783324602045
 MonoBehaviour:
@@ -1363,9 +1363,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 1
-  m_TeleportIfDistanceGreaterThan: 5
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 6.35
 --- !u!1 &6940247714802216933
 GameObject:
   m_ObjectHideFlags: 0

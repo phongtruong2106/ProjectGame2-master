@@ -938,6 +938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: f0f06f513972a834a832e09aa38fc87e, type: 2}
+  view: {fileID: 0}
 --- !u!1 &5811682988706619481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,6 +1118,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1454693f-4b81-4985-98c8-2f3e8b7dfa39
     m_ActionName: GamepLayer/SecondaryAttack[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ddb7d1bd-fbcb-4c32-8af7-397c1100638a
+    m_ActionName: GamepLayer/Mesage[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: GamepLayer
@@ -1134,6 +1139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6b420beb4c63344aedce32ebf5d783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  view: {fileID: 0}
   playerData: {fileID: 11400000, guid: 17c0618e01beef349b795ea6656ea33d, type: 2}
 --- !u!114 &5811682988706619476
 MonoBehaviour:
@@ -1147,7 +1153,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93bf9b31f5a33ab40a0b73e3096f908c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  isMove: 1
+  isDash: 1
+  isAttack: 1
+  isjump: 1
   inputHoldTime: 0.2
+  startingPosition: {fileID: 11400000, guid: ea6e6291048f093439a541e9559bbb0d, type: 2}
 --- !u!212 &5811682988706619479
 SpriteRenderer:
   m_ObjectHideFlags: 0

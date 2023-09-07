@@ -16,6 +16,8 @@ public class SpawnPlayers : MonoBehaviour
         Vector2 radomPosition = vectorValue.initialValue;
         GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, radomPosition, Quaternion.identity);
         cameraManager.SetPlayerTarget(player);
+
+
     }
 }
     
